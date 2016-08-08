@@ -42,7 +42,7 @@ var Component = React.createClass({
             title: 'Full name',
             validate: [{
               validator: 'isLength',
-              arguments: [1, 23],
+              arguments: [{min:1, max:23}],
               message: '{TITLE} must be between {ARGS[0]} and {ARGS[1]} characters'
             }]
           },
@@ -50,7 +50,7 @@ var Component = React.createClass({
             title: 'Username',
             validate: [{
               validator: 'isLength',
-              arguments: [3, 16],
+              arguments: [{min:3, max:16}],
               message: '{TITLE} must be between {ARGS[0]} and {ARGS[1]} characters'
             },{
               validator: 'matches',
@@ -62,7 +62,7 @@ var Component = React.createClass({
             title: 'Password',
             validate: [{
               validator: 'isLength',
-              arguments: [6, 16],
+              arguments: [{min:6, max:16}],
               message: '{TITLE} must be between {ARGS[0]} and {ARGS[1]} characters'
             }]
           },
@@ -70,7 +70,7 @@ var Component = React.createClass({
             title: 'Email address',
             validate: [{
               validator: 'isLength',
-              arguments: [6, 255],
+              arguments: [{min:6, max:255}],
             },{
               validator: 'isEmail',
             }]
@@ -79,7 +79,7 @@ var Component = React.createClass({
             title: 'Biography',
             validate: [{
               validator: 'isLength',
-              arguments: [0, 512],
+              arguments: [{min: 0, max:512}],
               message: '{TITLE} must be between {ARGS[0]} and {ARGS[1]} characters'
             }]
           },
@@ -111,7 +111,7 @@ var Component = React.createClass({
             title: 'Country',
             validate: [{
               validator: 'isLength',
-              arguments: [2],
+              arguments: [{min:2}],
               message: '{TITLE} is required'
             }]
           },

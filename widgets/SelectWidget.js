@@ -50,7 +50,7 @@ module.exports = React.createClass({
     });
 
     return (
-      <View>
+      <View style={this.props.style}>
         {this._childrenWithProps}
       </View>
     );

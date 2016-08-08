@@ -27,6 +27,7 @@ function doValidateOne(k = '', value = undefined, validators = {}) {
     });
 
     if (typeof validate[i].validator === 'function') {
+      clonedArgs.unshift(value);
       isValid = validate[i].validator.apply(null, clonedArgs);
 
       // handle custom validators

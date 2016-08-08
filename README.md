@@ -267,7 +267,7 @@ var Component = React.createClass({
         />
 
         <GiftedForm.NoticeWidget
-          title='By signing up, you agree to the Terms of Service and Privacy Policity.'
+          title='By signing up, you agree to the Terms of Service and Privacy Policy.'
         />
 
         <GiftedForm.HiddenWidget name='tos' value={true} />

@@ -15,6 +15,7 @@ var GiftedFormManager = require('../GiftedFormManager');
 var TimerMixin = require('react-timer-mixin');
 
 var moment = require('moment');
+import {Actions} from 'react-native-router-flux'
 
 module.exports = React.createClass({
   mixins: [TimerMixin, WidgetMixin],
@@ -141,6 +142,9 @@ module.exports = React.createClass({
           </TouchableOpacity>
         );
       },
+      updateDisplayValue () {
+        _self.refreshDisplayableValue();
+      }
     };
 
     // console.log('this.props.openModal from modal widget');
@@ -187,8 +191,10 @@ module.exports = React.createClass({
       });
     }
 
-    if (navigator !== null) {
-      navigator.pop();
+    if (navigator !== null && navigator.pop === 'function') {
+      navigator.pop()
+    } else {
+      Actions.pop()
     }
   },
 

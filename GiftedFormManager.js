@@ -11,8 +11,6 @@ function doValidateOne(k = '', value = undefined, validators = {}) {
     var args = validate[i].arguments;
     args = !Array.isArray(args) ? [ args ] : args;
     var clonedArgs = args.slice(0);
-    clonedArgs.unshift(value);
-
 
     validate[i].message = validate[i].message || '';
 
@@ -43,6 +41,12 @@ function doValidateOne(k = '', value = undefined, validators = {}) {
       if (typeof validatorjs[validate[i].validator] === 'undefined') {
         console.warn('GiftedForm Error: Validator is not correct for: '+k);
         continue;
+      }
+
+      if (validate[i].validator === 'isAfter' || validate[i].validator === 'isBefore') {
+        clonedArgs.unshift(value.toString());
+      } else {
+        clonedArgs.unshift(value);
       }
 
       if (validate[i].validator === 'isLength') {

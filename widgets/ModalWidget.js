@@ -26,6 +26,7 @@ module.exports = React.createClass({
       scrollEnabled: true,
       disclosure: true,
       cancelable: false,
+      confirmable: true,
       displayValue: '',
     };
   },
@@ -35,6 +36,7 @@ module.exports = React.createClass({
     scrollEnabled: React.PropTypes.bool,
     disclosure: React.PropTypes.bool,
     cancelable: React.PropTypes.bool,
+    confirmable: React.PropTypes.bool,
     displayValue: React.PropTypes.string,
   },
 
@@ -122,25 +124,28 @@ module.exports = React.createClass({
       renderRightButton(navigator) {
         // @todo other solution than onBack ? maybe do something automatically when scene get focus
         // @todo move button style to themes
-        return (
-          <TouchableOpacity
-            onPress={() => {
-              _self.requestAnimationFrame(() => {
-                _self.onClose(null, navigator);
-              });
-            }}
-          >
-            <Image
-              style={{
-                width: 21,
-                marginRight: 10,
-                tintColor: '#097881',
+        if (_self.props.confirmable === true) {
+          return (
+            <TouchableOpacity
+              onPress={() => {
+                _self.requestAnimationFrame(() => {
+                  _self.onClose(null, navigator);
+                });
               }}
-              resizeMode={Image.resizeMode.contain}
-              source={require('../icons/check.png')}
-            />
-          </TouchableOpacity>
-        );
+            >
+              <Image
+                style={{
+                  width: 21,
+                  marginRight: 10,
+                  tintColor: '#097881',
+                }}
+                resizeMode={Image.resizeMode.contain}
+                source={require('../icons/check.png')}
+              />
+            </TouchableOpacity>
+          );
+        }
+        return null;
       },
       updateDisplayValue () {
         _self.refreshDisplayableValue();

@@ -45,7 +45,7 @@ function doValidateOne(k = '', value = undefined, validators = {}) {
       }
 
       if (validate[i].validator === 'isAfter' || validate[i].validator === 'isBefore') {
-        clonedArgs.unshift(value.toString());
+        clonedArgs.unshift(typeof value === 'undefined' ? '' : value.toString());
       } else {
         clonedArgs.unshift(value);
       }

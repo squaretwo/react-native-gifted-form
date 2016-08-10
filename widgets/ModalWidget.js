@@ -127,6 +127,7 @@ module.exports = React.createClass({
         if (_self.props.confirmable === true) {
           return (
             <TouchableOpacity
+              style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}
               onPress={() => {
                 _self.requestAnimationFrame(() => {
                   _self.onClose(null, navigator);

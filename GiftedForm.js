@@ -11,6 +11,7 @@ const SwitchWidget = require('./widgets/SwitchWidget');
 const SelectWidget = require('./widgets/SelectWidget');
 const OptionWidget = require('./widgets/OptionWidget');
 const SelectCountryWidget = require('./widgets/SelectCountryWidget');
+const DatePickerWidget = require('./widgets/DatePickerWidget');
 const DatePickerIOSWidget = require('./widgets/DatePickerIOSWidget');
 const ModalWidget = require('./widgets/ModalWidget');
 const SubmitWidget = require('./widgets/SubmitWidget');
@@ -34,6 +35,7 @@ const GiftedForm = React.createClass({
     SelectWidget,
     OptionWidget,
     SelectCountryWidget,
+    DatePickerWidget,
     DatePickerIOSWidget,
     ModalWidget,
     SubmitWidget,

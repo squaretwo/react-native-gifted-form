@@ -28,30 +28,36 @@ module.exports = React.createClass({
   componentDidMount() {
     this._onChange(this.props.getDefaultDate());
   },
+  _getDatePicker() {
+    if (Platform.OS === 'android') {
+      return (
+        <DatePicker
+          style={this.getStyle('picker')}
 
+          {...this.props}
+
+          onDateChange={this._onChange}
+          date={this.state.value}
+        />
+      );
+    } else {
+      return (
+        <DatePickerIOS
+          style={this.getStyle('picker')}
+
+          {...this.props}
+
+          onDateChange={this._onChange}
+          date={this.state.value}
+        />
+      );
+    }
+  },
   render() {
 
     return (
       <View style={[this.props.style, this.getStyle('row')]}>
-        {Platform.OS === 'ios' ?
-          <DatePickerIOS
-            style={this.getStyle('picker')}
-
-            {...this.props}
-
-            onDateChange={this._onChange}
-            date={this.state.value}
-          />
-          :
-          <DatePicker
-            style={this.getStyle('picker')}
-
-            {...this.props}
-
-            onDateChange={this._onChange}
-            date={this.state.value}
-          />
-        }
+        {this._getDatePicker()}
       </View>
     );
   },

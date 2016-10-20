@@ -2,6 +2,7 @@ var React = require('react');
 var {
   View,
   Platform,
+  DatePickerIOS,
   PixelRatio
 } = require('react-native')
 
@@ -32,14 +33,25 @@ module.exports = React.createClass({
 
     return (
       <View style={[this.props.style, this.getStyle('row')]}>
-        <DatePicker
-          style={this.getStyle('picker')}
+        {Platform.OS === 'ios' ?
+          <DatePickerIOS
+            style={this.getStyle('picker')}
 
-          {...this.props}
+            {...this.props}
 
-          onDateChange={this._onChange}
-          date={this.state.value}
-        />
+            onDateChange={this._onChange}
+            date={this.state.value}
+          />
+          :
+          <DatePicker
+            style={this.getStyle('picker')}
+
+            {...this.props}
+
+            onDateChange={this._onChange}
+            date={this.state.value}
+          />
+        }
       </View>
     );
   },

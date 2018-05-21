@@ -1,4 +1,6 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
 import {
   View,
   Text,
@@ -15,9 +17,8 @@ var GiftedFormManager = require('../GiftedFormManager');
 var TimerMixin = require('react-timer-mixin');
 
 var moment = require('moment');
-import {Actions} from 'react-native-router-flux'
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   mixins: [TimerMixin, WidgetMixin],
 
   getDefaultProps() {
@@ -28,16 +29,17 @@ module.exports = React.createClass({
       cancelable: false,
       confirmable: true,
       displayValue: '',
+      onClose: () => {}
     };
   },
 
   propTypes: {
-    type: React.PropTypes.string,
-    scrollEnabled: React.PropTypes.bool,
-    disclosure: React.PropTypes.bool,
-    cancelable: React.PropTypes.bool,
-    confirmable: React.PropTypes.bool,
-    displayValue: React.PropTypes.string,
+    type: PropTypes.string,
+    scrollEnabled: PropTypes.bool,
+    disclosure: PropTypes.bool,
+    cancelable: PropTypes.bool,
+    displayValue: PropTypes.string,
+    onClose: PropTypes.func
   },
 
   getInitialState() {
@@ -197,11 +199,11 @@ module.exports = React.createClass({
       });
     }
 
-    if (navigator !== null && navigator.pop === 'function') {
-      navigator.pop()
-    } else {
-      Actions.pop()
+    if (navigator !== null && typeof navigator.pop === 'function') {
+      navigator.pop();
     }
+
+    this.props.onClose && this.props.onClose();
   },
 
   refreshDisplayableValue() {

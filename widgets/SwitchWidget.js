@@ -1,30 +1,22 @@
-var React = require('react');
-var {
+import React from 'react';
+import createReactClass from 'create-react-class';
+import {
   View,
   Text,
-  SwitchIOS,
-  SwitchAndroid,
+  Switch,
   Platform,
   PixelRatio
-} = require('react-native')
+} from 'react-native';
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 
-var GiftedSwitch = React.createClass({
+var GiftedSwitch = createReactClass({
   _getSwitch() {
-    if (Platform.OS === 'android') {
-      return (
-        <SwitchAndroid
-          {...this.props}
-        />
-      );
-    } else {
-      return (
-        <SwitchIOS
-          {...this.props}
-        />
-      );
-    }
+    return (
+      <Switch
+        {...this.props}
+      />
+    );
   },
   render() {
     return (
@@ -37,7 +29,7 @@ var GiftedSwitch = React.createClass({
 
 
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   mixins: [WidgetMixin],
 
   getDefaultProps() {

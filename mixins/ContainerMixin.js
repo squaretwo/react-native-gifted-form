@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   ScrollView,
   View,
@@ -11,10 +12,10 @@ var GiftedFormManager = require('../GiftedFormManager');
 module.exports = {
 
   propTypes: {
-    formName: React.PropTypes.string,
-    scrollOnTap: React.PropTypes.bool,
-    scrollEnabled: React.PropTypes.bool,
-    formStyles: React.PropTypes.object,
+    formName: PropTypes.string,
+    scrollOnTap: PropTypes.bool,
+    scrollEnabled: PropTypes.bool,
+    formStyles: PropTypes.object,
     // navigator: ,
   },
 
@@ -130,7 +131,7 @@ module.exports = {
           style={viewStyle}
           automaticallyAdjustContentInsets={false}
           keyboardDismissMode='on-drag'
-          keyboardShouldPersistTaps={true}
+          keyboardShouldPersistTaps="always"
 
           onTouchStart={this.props.scrollOnTap === true ? this._onTouchStart : null}
           onScroll={this.props.scrollOnTap === true ? this._onScroll : null}

@@ -1,7 +1,8 @@
-var React = require('react');
-var {
+import React from 'react';
+import createReactClass from 'create-react-class';
+import {
   View, ListView, Text, TouchableHighlight, TextInput, Image, PixelRatio
-} = require('react-native')
+} from 'react-native';
 
 var WidgetMixin = require('../mixins/WidgetMixin.js');
 var OptionWidget = require('./OptionWidget.js');
@@ -260,7 +261,7 @@ var countries =
 ];
 
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   mixins: [WidgetMixin],
 
   statics: {
@@ -1935,9 +1936,10 @@ module.exports = React.createClass({
     );
   },
 
-  renderSeparator() {
+  renderSeparator(sectionId, rowId) {
     return (
       <View
+        key={`sep:${sectionId}:${rowId}`}
         style={this.getStyle(['separator'])}
       />
     );
@@ -1960,10 +1962,12 @@ module.exports = React.createClass({
           initialListSize={10}
           pageSize={10}
 
-          keyboardShouldPersistTaps={true}
+          keyboardShouldPersistTaps="always"
           keyboardDismissMode="on-drag"
 
           renderSeparator={this.renderSeparator}
+
+          enableEmptySections={true}
 
         />
       </View>

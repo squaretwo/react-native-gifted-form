@@ -6,10 +6,13 @@ var {
   PixelRatio
 } = require('react-native')
 
+import createReactClass from 'create-react-class';
+
 var WidgetMixin = require('../mixins/WidgetMixin.js');
+
 import DatePicker from 'react-native-datepicker'
 
-module.exports = React.createClass({
+module.exports = createReactClass({
   mixins: [WidgetMixin],
 
   getDefaultProps() {
@@ -56,7 +59,7 @@ module.exports = React.createClass({
   render() {
 
     return (
-      <View style={[this.props.style, this.getStyle('row')]}>
+      <View style={[this.getStyle('row'), this.props.style]}>
         {this._getDatePicker()}
       </View>
     );

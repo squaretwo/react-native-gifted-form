@@ -55,7 +55,7 @@ module.exports = createReactClass({
       return (
         <Image
           style={this.getStyle('disclosure')}
-          resizeMode={Image.resizeMode.contain}
+          resizeMode="contain"
           source={require('../icons/disclosure.png')}
         />
       );
@@ -115,7 +115,7 @@ module.exports = createReactClass({
                   marginLeft: 10,
                   tintColor: '#097881',
                 }}
-                resizeMode={Image.resizeMode.contain}
+                resizeMode="contain"
                 source={require('../icons/close.png')}
               />
             </TouchableOpacity>
@@ -142,7 +142,7 @@ module.exports = createReactClass({
                   marginRight: 10,
                   tintColor: '#097881',
                 }}
-                resizeMode={Image.resizeMode.contain}
+                resizeMode="contain"
                 source={require('../icons/check.png')}
               />
             </TouchableOpacity>
